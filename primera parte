@@ -1,0 +1,82 @@
+program Laser;
+
+uses crt;
+var i,claseboleto: integer;
+  op: integer=0;
+  nombre,tipoboleto:string;
+  edad: byte;
+
+BEGIN
+	writeln('[]= = = = = = = = = = = = = = = = = =[]');
+	writeln('|                                     |');
+	writeln('|                                     |');
+	writeln('|                                     |');
+	writeln('|               LASER                 |'); 
+	writeln('|              AIRLINES               |');
+	writeln('|                                     |');
+	writeln('|                                     |');
+	writeln('|                                     |');
+	writeln('[]= = = = = = = = = = = = = = = = = =[]');
+	readln;
+	clrscr;
+	
+	
+		 writeln('--------------------------');
+		 writeln('| 1) comprar boleto      |');
+		 writeln('|                        |');
+		 writeln('| 2) ver sistema         |');
+		 writeln('|                        |');
+		 writeln('| 3) Salir               |');
+		 writeln('|                        |');
+		 writeln('--------------------------');
+		 readln(op);
+		 case op of
+		 1: begin
+			clrscr;
+			writeln('Ingrese sus datos');
+			writeln('Ingrese su nombre');
+			readln(nombre);
+			writeln('Ingrese su edad');
+			readln(edad);
+			  if (edad<18)then
+			    begin
+			      writeln('Usted no puede comprar boletos, debe ser mayor de edad');
+			    end;
+			writeln('Ingrese la clase del boleto');
+			readln(claseboleto);
+			    if (claseboleto=1)then
+			      begin
+			        writeln('Ha elegido Primera clase');
+			      end
+			      else if (claseboleto=2)then
+			      begin
+			        writeln('Ha elegido segunda clase');
+			      end
+			      else if (claseboleto=3)then
+			      begin
+			        writeln('Ha elegido tercera clase');
+			      end;
+			writeln('Ingrese el tipo del boleto');
+			readln(TipoBoleto);
+			    if (tipoboleto='N')then
+			      begin
+			        writeln('Ha elegido boletos nacionales');
+			      end
+			      else if (tipoboleto='I')then
+			      begin
+			        writeln('Ha elegido boletos Internacionales');
+			      end;
+		 end;
+		 
+		 2: begin
+			clrscr;
+			writeln('La cantidad de boletos que se vendieron es:');
+		 end;
+		 
+		 3: begin 
+			clrscr;
+			writeln('Hasta luego');
+		 end;
+	end;
+readln;
+END.
