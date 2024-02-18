@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="laser"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="56"/>
+        <CursorPos X="29" Y="62"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="18">
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="101" Column="77" TopLine="49"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="2" Column="49"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="14" Column="21" TopLine="58"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="13" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="130" Column="77" TopLine="90"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="13" Column="17"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="118" Column="32" TopLine="101"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="130" Column="36" TopLine="113"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="129" Column="23" TopLine="113"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="121" Column="22" TopLine="109"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="123" Column="22" TopLine="104"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="101" Column="11" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="13" Column="17"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="124" Column="26" TopLine="105"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="93" Column="16" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="9" Column="11" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="135" Column="5" TopLine="101"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="82" Column="20" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="70" Column="26" TopLine="57"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="ProyectLaser1.lpr"/>
+        <Line Value="1"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
+</CONFIG>
