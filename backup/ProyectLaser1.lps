@@ -10,13 +10,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="laser"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="56"/>
-        <CursorPos X="29" Y="62"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="151"/>
+        <CursorPos X="7" Y="176"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="18">
+    <JumpHistory HistoryIndex="20">
       <Position>
         <Filename Value="ProyectLaser1.lpr"/>
         <Caret Line="101" Column="77" TopLine="49"/>
@@ -24,10 +24,6 @@
       <Position>
         <Filename Value="ProyectLaser1.lpr"/>
         <Caret Line="2" Column="49"/>
-      </Position>
-      <Position>
-        <Filename Value="ProyectLaser1.lpr"/>
-        <Caret Line="14" Column="21" TopLine="58"/>
       </Position>
       <Position>
         <Filename Value="ProyectLaser1.lpr"/>
@@ -92,6 +88,18 @@
       <Position>
         <Filename Value="ProyectLaser1.lpr"/>
         <Caret Line="70" Column="26" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="11" Column="11"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="61" Column="35" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="ProyectLaser1.lpr"/>
+        <Caret Line="121" Column="6" TopLine="113"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -3,11 +3,13 @@ program laser;
 uses crt;
 
 var
-  i, TotalBoletos, claseboleto, edadComprador: integer;
-  nombre, clasebol1, clasebol2, clasebol3: string;
-  cedula, edad: integer;
-  op: integer;
-  clasebol: integer;
+  i, TotalBoletos, claseboleto, edadComprador, cedula, edad: integer;
+  nombre, clasebol1, clasebol2, clasebol3, TipoVuelo: string;
+   totalNacional, totalInternacional: integer;
+
+// Variables de los menus
+  op, clasebol: integer;
+
 
 begin
   writeln('[]= = = = = = = = = = = = = = = = = =[]');
@@ -49,11 +51,13 @@ begin
 
           if (TotalBoletos <= 5) and (TotalBoletos > 0) then
           begin
-            i := 1; // Inicializar el contador de boletos
+            i := 1; // contador de boletos
             while i <= TotalBoletos do
             begin
               clrscr;
+              writeln('--------------------------');
               writeln('Ingrese sus datos para el boleto ', i, ':');
+              writeln('--------------------------');
               writeln(' ');
               writeln('Ingrese su nombre');
               readln(nombre);
@@ -64,9 +68,38 @@ begin
               writeln('Ingrese su edad');
               readln(edad);
 
+
+//   TIPO DE VUELO
+              totalNacional:= 0;
+              totalInternacional:=0;
+
+              writeln('Seleccione el tipo de vuelo:');
+              writeln(' N - Nacional');
+              writeln(' I - Internacional');
+              readln(TipoVuelo);
+              case upcase(TipoVuelo) of
+                'N':
+                begin
+                  TipoVuelo := 'Nacional';
+                  totalNacional := totalNacional + 1;
+                end;
+
+                'I':
+                begin
+                  TipoVuelo := 'Internacional';
+                  totalInternacional := totalInternacional + 1;
+                end;
+
+                else
+                  TipoVuelo := 'Tipo de vuelo no seleccionado';
+              end;
+
+//  CLASE DEL BOLETO
+
               Repeat
                 writeln(' ');
                 clrscr;
+                writeln('');
                 writeln('Ingrese la clase del boleto');
                 writeln('--------------------------');
                 writeln('| 1) Primera clase       |');
@@ -95,30 +128,37 @@ begin
                     Readln(clasebol3);
                     if (edad >= 60) then
                     begin
-                      writeln('Lo sentimos, los boletos de tercera clase no están disponibles para personas mayores de 60 años.');
+                      writeln('Lo sentimos, los boletos de tercera clase no estan disponibles para personas mayores de 60 anios.');
                       writeln('Seleccione otra clase, por favor');
                       readln;
                     end;
                   end;
                   else
                   begin
-                    Writeln('Usted ha ingresado un caracter no válido. Intente de nuevo');
+                    Writeln('Usted ha ingresado un caracter no valido. Intente de nuevo');
                     readln;
                     clrscr;
                   end;
                 end;
               until (edad < 60) or ((clasebol <> 3) and (clasebol <> 3));
 
-              writeln('Información del boleto ', i, ':');
+
+//  RES. DATOS BOLETOS
+              writeln('------------------------------------');
+              writeln('Boleto ', i, ' registrado con exito:');
+              writeln('------------------------------------');
+              writeln('Informacion del boleto ', i, ':');
               writeln('Nombre: ', nombre);
-              writeln('Cédula: ', cedula);
+              writeln('Cedula: ', cedula);
               writeln('Edad: ', edad);
+              writeln('Tipo de Vuelo: ', TipoVuelo);
 
               i := i + 1;
 
               if i <= TotalBoletos then
               begin
-                writeln('Presiona Enter para ingresar el próximo boleto...');
+                writeln('');
+                writeln('Presiona Enter para ingresar el proximo boleto...');
                 readln;
               end;
             end;
@@ -133,6 +173,9 @@ begin
                 writeln('Es muy joven para comprar boletos');
               end;
           end;
+
+
+
       2:
       begin
         writeln(''); // ver sistema aun no listo
