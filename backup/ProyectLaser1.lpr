@@ -6,6 +6,7 @@ var
   i, TotalBoletos, claseboleto, edadComprador, cedula, edad: integer;
   nombre, clasebol1, clasebol2, clasebol3, TipoVuelo: string;
    totalNacional, totalInternacional: integer;
+   nacionalidad, vced, eced: char;
 
 // Variables de los menus
   op, clasebol: integer;
@@ -62,8 +63,33 @@ begin
               writeln('Ingrese su nombre');
               readln(nombre);
               writeln(' ');
-              writeln('Ingrese su cedula');
-              readln(cedula);
+//   NACIONALIDAD
+                   clrscr;
+                   Repeat
+                     writeln('Cual es su nacionalidad?');
+                     writeln('--------------------------');
+                     writeln('| V- Venezolano          |');
+                     writeln('|                        |');
+                     writeln('| E- Extranjero          |');
+                     writeln('--------------------------');
+                     readln(nacionalidad);
+                     clrscr;
+                     case nacionalidad of
+                       'V', 'v': begin
+                                   Writeln('Es usted Venezolano.');
+                                   writeln('Por favor, ingrese su cedula de la siguiente manera -> 12345678');
+                                   readln(vced);
+                                 end;
+                       'E', 'e': begin
+                                   Writeln('Es usted una persona Extranjera.');
+                                   writeln('Por favor, ingrese su cedula de extranjero de la siguiente manera -> 12345678');
+                                   readln(eced);
+                                 end;
+                       else
+                         Writeln('Usted ha ingresado un caracter no valido. Intente de nuevo');
+                     end;
+                   until (nacionalidad = 'V') or (nacionalidad = 'E') or (nacionalidad = 'v') or (nacionalidad = 'e');
+
               writeln(' ');
               writeln('Ingrese su edad');
               readln(edad);
@@ -73,6 +99,7 @@ begin
               totalNacional:= 0;
               totalInternacional:=0;
 
+              writeln('');
               writeln('Seleccione el tipo de vuelo:');
               writeln(' N - Nacional');
               writeln(' I - Internacional');
@@ -102,20 +129,20 @@ begin
                 writeln('');
                 writeln('Ingrese la clase del boleto');
                 writeln('--------------------------');
-                writeln('| 1) Primera clase       |');
-                writeln('| 2) Segunda Clase       |');
-                writeln('| 3) Tercera Clase       |');
+                writeln('| 1) Primera clase (25$)  |');
+                writeln('| 2) Segunda Clase (10$)  |');
+                writeln('| 3) Tercera Clase        |');
                 writeln('--------------------------');
                 readln(clasebol);
                 case clasebol of
 
-                  1:
+                1:
                   begin
                     clrscr;
                     writeln('Ha seleccionado primera clase');
                     Readln (clasebol1);
                   end;
-                  2:
+                2:
                   begin
                     clrscr;
                     writeln('Ha seleccionado segunda clase');
