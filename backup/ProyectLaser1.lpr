@@ -4,9 +4,11 @@ uses crt,SysUtils;
 
 var
   i, claseboleto, EdadCompradorInt, TotalBoletosInt, edad,cedulaInt,numeroClaseInt: integer;
-  nombre,cedula,numeroClase, edadComprador,TotalBoletos, clasebol1, clasebol2, clasebol3, TipoVuelo: string;
-   totalNacional, totalInternacional,ValError: integer;
+  nombre,cedula,numeroClase, edadComprador,TotalBoletos, clasebol1, clasebol2, clasebol3, TipoVuelo, Vuelta: string;
+   totalNacional, totalInternacional,ValError, Nacional, Internacional: integer;
    nacionalidad, vced, eced: char;
+
+//Variables de validación
    ValEdad,conversionExitosaCar,conversionExitosaLong,StringValido,NumeroValido:boolean;
 
 
@@ -173,12 +175,159 @@ begin
                 begin
                   TipoVuelo := 'Nacional';
                   totalNacional := totalNacional + 1;
+
+// Incersion nuevo codigo - Boleto Nacional
+writeln('Su vuelo amerita un boleto de vuelta?');
+                  readln(vuelta);
+                  clrscr;
+					writeln('|---------------------------------------------|');
+					writeln('|-------------VUELOS NACIONALES---------------|');
+					writeln('|---------------------------------------------|');
+					writeln('|-----------------DESTINOS--------------------|');
+					writeln('|---------------------------------------------|');
+					writeln('|---------------------------------|--PRECIOS--|');
+					writeln('|---------------------------------------------|');
+					writeln('|Porlamar-Caracas|Caracas-Prolamar|    50$    |');
+					writeln('|---------------------------------------------|');
+					writeln('|Puerto ordaz-Caracas|Caracaz-Puerto ordaz|45$|');
+					writeln('|---------------------------------------------|');
+					writeln('|Maracaibo-Caracas|Caracas-Maracaibo|   80$   |');
+					writeln('|---------------------------------------------|');
+					writeln('|El Vigia-Caracas|Caracas-El Vigia|    75$    |');
+					writeln('|---------------------------------------------|');
+					writeln('|Barcelona-Caracas|Caracas-Barcelona|   30$   |');
+					writeln('|---------------------------------------------|');
+					writeln('|La Fria-Caracas|Caracas-La Fria|    60$      |');
+					writeln('|---------------------------------------------|');
+					writeln;
+					writeln('Presione Enter');
+					readln;
+					clrscr;
+					writeln('Ingrese su destino:');
+					writeln('1.Porlamar-Caracas');
+					writeln('2.Puerto Ordaz-Caracas');
+					writeln('3.Maracaibo-Caracas');
+					writeln('4.El Vigia-Caracas');
+					writeln('5.Barcelona-Caracas');
+					writeln('6.La Fria-Caracas');
+					readln(Nacional);
+					if (Nacional=1)then
+					begin
+					  writeln('Su vuelo sera de caracas a porlamar');
+					  readln;
+					end
+					else if (Nacional=2)then
+					begin
+					  writeln('Su vuelo sera de puerto ordaz a caracas');
+					  readln;
+					end
+					else if (Nacional=3)then
+					begin
+					  writeln('Su vuelo sera de Maracaibo a caracas');
+					  readln;
+					end
+					else if (Nacional=4)then
+					begin
+					  writeln('Su vuelo sera de el vigia a caracas');
+					  readln;
+					end
+					else if (Nacional=5)then
+					begin
+					  writeln('Su vuelo sera de Barcelona a Caracas');
+					  readln;
+					end
+					else if (Nacional=6)then
+					begin
+					  writeln('Su vuelo sera de La Fria a Caracas');
+					  readln;
+					end
+					else if (Nacional>6) or (Nacional<0)then
+					begin
+					  writeln('Opcion no valida');
+					  readln;
+					end;
+
+
+
+// FIN incersion nuevo codigo - Boleto Nacional
+
+
+
+
+
+
+
                 end;
 
                 'I':
                 begin
                   TipoVuelo := 'Internacional';
                   totalInternacional := totalInternacional + 1;
+
+
+// Incersion nuevo codigo - Internacion
+
+readln;
+                  clrscr;
+                                       writeln('|--------------------------------------------------|');
+					writeln('|----------------VUELOS INTERNACIONALES------------|');
+					writeln('|--------------------------------------------------|');
+					writeln('|--------------------DESTINOS----------------------|');
+					writeln('|--------------------------------------------------|');
+					writeln('|--------------------------------------|--PRECIOS--|');
+					writeln('|--------------------------------------------------|');
+					writeln('|Bogota-Caracas|Caracas-Bogota              | 499$ |');
+					writeln('|--------------------------------------------------|');
+					writeln('|Curazao-Caracas|Caracaz-Curazao              |400$|');
+					writeln('|--------------------------------------------------|');
+					writeln('|Santo Domingo-Caracas|Caracas-Santo Domingo| 700$ |');
+					writeln('|--------------------------------------------------|');
+					writeln('|La Romana-Caracas|Caracas-La Romana        | 650$ |');
+					writeln('|--------------------------------------------------|');
+					writeln;
+					writeln('Presione Enter');
+					readln;
+					clrscr;
+					writeln('Ingrese su destino:');
+					writeln('1.Bogota-Caracas');
+					writeln('2.Curazao-Caracas');
+					writeln('3.Santo Domingo-Caracas');
+					writeln('4.La Romana-Caracas');
+					readln(Internacional);
+					if (Internacional=1)then
+					begin
+					  writeln('Su vuelo sera de caracas a porlamar');
+					  readln;
+					end
+					else if (Internacional=2)then
+					begin
+					  writeln('Su vuelo sera de puerto ordaz a caracas');
+					  readln;
+					end
+					else if (Internacional=3)then
+					begin
+					  writeln('Su vuelo sera de Maracaibo a caracas');
+					  readln;
+					end
+					else if (Internacional=4)then
+					begin
+					  writeln('Su vuelo sera de el vigia a caracas');
+					  readln;
+					end
+					else if (Internacional>6) or (Internacional<0)then
+					begin
+					  writeln('Opcion no valida');
+					  readln;
+					end;
+
+
+
+
+
+
+
+// FIN incersion codigo - Internacional
+
                 end;
 
                 else
@@ -200,13 +349,7 @@ begin
                 writeln('--------------------------');
                 readln(clasebol);
 
-                (* conversionExitosaCar:= TryStrToInt(numeroClase,numeroClaseInt);
-                 if not conversionExitosaCar then
-                 begin
-                   writeln('Caracter Invalido');
-                 end;
 
-                until conversionExitosaCar;  *)
                 case clasebol of
 
                 1:
