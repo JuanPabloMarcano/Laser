@@ -1,12 +1,14 @@
 program laser;
 
-uses crt;
+uses crt,SysUtils;
 
 var
-  i, TotalBoletos, claseboleto, edadComprador, cedula, edad: integer;
-  nombre, clasebol1, clasebol2, clasebol3, TipoVuelo: string;
-   totalNacional, totalInternacional: integer;
+  i, claseboleto, EdadCompradorInt, TotalBoletosInt, edad,cedulaInt,numeroClaseInt: integer;
+  nombre,cedula,numeroClase, edadComprador,TotalBoletos, clasebol1, clasebol2, clasebol3, TipoVuelo: string;
+   totalNacional, totalInternacional,ValError: integer;
    nacionalidad, vced, eced: char;
+   ValEdad,conversionExitosaCar,conversionExitosaLong,StringValido,NumeroValido:boolean;
+
 
 // Variables de los menus
   op, clasebol: integer;
@@ -41,20 +43,50 @@ begin
     case op of
       1:
       begin
+
+        repeat
         writeln('Cuantos anios tiene el comprador?');
         readln(edadComprador);
 
-        if (edadComprador > 18) then
+        conversionExitosaCar:=TryStrToInt(EdadComprador, EdadCompradorInt);
+        conversionExitosaLong:= (edadCompradorInt >=0) and (edadCompradorInt<= 90);
+        if  not conversionExitosaCar and conversionExitosaLong then
+              begin
+
+           writeln('Por favor, ingrese un numero valido.');
+
+
+              end;
+
+           until conversionExitosaCar and conversionExitosaLong;
+
+
+
+        if (edadCompradorInt > 18) then
         begin
+
+          repeat
           writeln(' ');
           writeln('Cuantos boletos desea comprar? (Maximo 5)');
           readln(TotalBoletos);
 
-          if (TotalBoletos <= 5) and (TotalBoletos > 0) then
+          conversionExitosaCar:=TryStrToInt(TotalBoletos,TotalBoletosInt);
+
+          if not conversionExitosaCar then
+          begin
+            writeln('Ha ingresado un caracter invalido, intente nuevamente.')
+          end;
+
+          until conversionExitosaCar;
+
+          if (TotalBoletosInt <= 5) and (TotalBoletosInt > 0) then
           begin
             i := 1; // contador de boletos
-            while i <= TotalBoletos do
+            while i <= TotalBoletosInt do
             begin
+           //      StringValido := False;
+
+             // repeat
               clrscr;
               writeln('--------------------------');
               writeln('Ingrese sus datos para el boleto ', i, ':');
@@ -63,6 +95,18 @@ begin
               writeln('Ingrese su nombre');
               readln(nombre);
               writeln(' ');
+
+             // NumeroValido:= Val(nombre,ValError);
+              //StringValido:= (nombre <> '') and not NumeroValido;
+
+          (*    if not NumeroValido then
+              begin
+                writeln('No ha ingresado un nombre valido. Favor intentar nuevamente');
+              end;
+
+
+
+              until StringValido; *)
 //   NACIONALIDAD
                    clrscr;
                    Repeat
@@ -77,13 +121,33 @@ begin
                      case nacionalidad of
                        'V', 'v': begin
                                    Writeln('Es usted Venezolano.');
+                                   repeat
+
                                    writeln('Por favor, ingrese su cedula de la siguiente manera -> 12345678');
                                    readln(cedula);
+
+                                   conversionExitosaCar:= TryStrToInt(cedula,cedulaInt);
+
+                                   if not conversionExitosaCar then
+
+                                   begin
+                                     writeln('Caracteres invalidos, ingrese cedula nuevamente.')
+                                   end;
+                                   until conversionExitosaCar;
                                  end;
                        'E', 'e': begin
+                         repeat
                                    Writeln('Es usted una persona Extranjera.');
                                    writeln('Por favor, ingrese su cedula de extranjero de la siguiente manera -> 12345678');
                                    readln(cedula);
+                                   conversionExitosaCar:= TryStrToInt(cedula,cedulaInt);
+                                   if not conversionExitosaCar then
+
+                                   begin
+                                     writeln('Caracteres invalidos, ingrese cedula nuevamente.')
+                                   end;
+                                   until conversionExitosaCar
+
                                  end;
                        else
                          Writeln('Usted ha ingresado un caracter no valido. Intente de nuevo');
@@ -123,7 +187,8 @@ begin
 
 //  CLASE DEL BOLETO
 
-              Repeat
+             // Repeat
+                repeat
                 writeln(' ');
                 clrscr;
                 writeln('');
@@ -134,6 +199,8 @@ begin
                 writeln('| 3) Tercera Clase        |');
                 writeln('--------------------------');
                 readln(clasebol);
+
+
                 case clasebol of
 
                 1:
@@ -182,7 +249,7 @@ begin
 
               i := i + 1;
 
-              if i <= TotalBoletos then
+              if i <= TotalBoletosInt then
               begin
                 writeln('');
                 writeln('Presiona Enter para ingresar el proximo boleto...');
@@ -211,4 +278,3 @@ begin
     end;
     until op = 3;
 end.
-
