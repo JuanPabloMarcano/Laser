@@ -10,7 +10,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="laser"/>
         <IsVisibleTab Value="True"/>
-        <CursorPos X="103" Y="7"/>
+        <TopLine Value="136"/>
+        <CursorPos Y="727"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit>

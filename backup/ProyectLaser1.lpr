@@ -176,7 +176,7 @@ begin
                   TipoVuelo := 'Nacional';
                   totalNacional := totalNacional + 1;
 
-// Incersion nuevo codigo - Boleto Nacional
+// Vuelo Nacional
 writeln('Su vuelo amerita un boleto de vuelta?');
                   readln(vuelta);
                   clrscr;
@@ -245,27 +245,14 @@ writeln('Su vuelo amerita un boleto de vuelta?');
 					begin
 					  writeln('Opcion no valida');
 					  readln;
-					end;
-
-
-
-// FIN incersion nuevo codigo - Boleto Nacional
-
-
-
-
-
-
-
+                                        end;
                 end;
 
                 'I':
                 begin
                   TipoVuelo := 'Internacional';
                   totalInternacional := totalInternacional + 1;
-
-
-// Incersion nuevo codigo - Internacion
+// Vuelo Internacional
 
 readln;
                   clrscr;
@@ -319,14 +306,6 @@ readln;
 					  writeln('Opcion no valida');
 					  readln;
 					end;
-
-
-
-
-
-
-
-// FIN incersion codigo - Internacional
 
                 end;
 
