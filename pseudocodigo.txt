@@ -1,0 +1,1573 @@
+﻿Inicio
+
+variables
+  i, claseboleto, EdadcompradorInt, TotalBoletosInt, edad,cedulaInt,numeroClaseInt: Entero;
+  nombre,cedula,numeroClase, edadcomprador,TotalBoletos, clasebol, TiPorVuelo, Vuelta,destino,PrecioTotalStr,edad1Str,PrecideinalStr: Cadena;
+   totalNacional, totalInternacional, Nacional, Internacional,PrecioClase: Entero;
+   Descuento,Precideinal,PrecioTotal:Real;
+
+   // Variables para almacenar la infomación de cada boleto
+  NombreBoleto1,ClaseBoleto1,vueltaBoleto1, CedulaBoleto1, TiPorVueloBoleto1, DestinoBoleto1,PrecioTotal1Str,PrecioBoleto1Str: Cadena;
+   PrecioClase1,edad1: Entero;
+   PrecioBoleto1:Real;
+
+  NombreBoleto2,vueltaBoleto2,ClaseBoleto2, CedulaBoleto2, TiPorVueloBoleto2, DestinoBoleto2,PrecioBoleto2Str,PrecioTotal2Str: Cadena;
+    PrecioClase2,edad2: Entero;
+    PrecioBoleto2:Real;
+
+   NombreBoleto3,vueltaBoleto3,ClaseBoleto3, CedulaBoleto3, TiPorVueloBoleto3, DestinoBoleto3, PrecioBoleto3Str,PrecioTotal3Str: Cadena;
+    PrecioClase3,edad3: Entero;
+    PrecioBoleto3:Real;
+
+   NombreBoleto4,vueltaBoleto4,ClaseBoleto4, CedulaBoleto4,TiPorVueloBoleto4, DestinoBoleto4, PrecioBoleto4Str,PrecioTotal4Str: Cadena;
+   PrecioClase4,edad4: Entero;
+   PrecioBoleto4:Real;
+
+   NombreBoleto5,vueltaBoleto5,ClaseBoleto5, CedulaBoleto5, TiPorVueloBoleto5, DestinoBoleto5, PrecioBoleto5Str,PrecioTotal5Str: Cadena;
+   PrecioClase5,edad5: Entero
+   PrecioBoleto5:Real;
+
+   nacionalidad: Caracter;
+
+   //Variables de validación
+   conversionExitosaCar,conversionExitosaLong:booleano;
+   //ariables deservicios
+   servicio: Entero;
+  servicioBoo: booleano;
+  servicioesp: Cadena
+
+  pago: Entero;
+  vuelto,faltante, precioServicio,precioServicioTo:Real;
+
+
+// Variables de los menus
+  op, clasebolInt: Entero;
+
+
+
+    constantes
+
+    //servicios
+    serv1 = 10;
+  serv2 = 35;
+
+      //vuelos Nacionales
+   PorlamarCaracas=  'Porlamar-Caracas';
+   PuertoodazCaracas='Puerto odaz- Caracas';
+   MaracaiboCaracas='Maracaibo-Caracas';
+   VigiaCaracas='El vigia- Caracas';
+   BarcelonaCaracas='Barcelona-Caracas';
+   FriaCaracas ='La Fria-Caracas';
+
+   //Precios Nacionales
+            PrecioPC= 50;
+            PrecioPorC=45;
+            PrecioMC=80;
+            PrecioVC=75;
+            PrecioBC=30;
+            PrecideC=60;
+
+
+
+
+    //Precios Internacionales
+
+    PrecioBoC=499;
+    PrecioCC =400;
+    PrecioSDC=700;
+    PrecioLRC=605;
+
+
+   //Vuelos Internacionales
+
+   BogotaCaracas='Bogota-Caracas';
+   CurazaoCaracas='Curazao-Caracas';
+   SantoDomingoCaracas='Santo Domingo-Caracas';
+   RomanaCaracas='La Romana-Caracas';
+
+
+
+Iniciar
+
+  Escribir('[]= = = = = = = = = = = = = = = = = =[]');
+  Escribir('|                                     |');
+  Escribir('|                                     |');
+  Escribir('|                                     |');
+  Escribir('|               LASER                 |');
+  Escribir('|              AIRLINES               |');
+  Escribir('|                                     |');
+  Escribir('|                                     |');
+  Escribir('|                                     |');
+  Escribir('[]= = = = = = = = = = = = = = = = = =[]');
+  Leer;
+  clrscr;
+
+  Repetir
+    Escribir('--------------------------');
+    Escribir('| 1) comprar boleto      |');
+    Escribir('|                        |');
+    Escribir('| 2) ver sistema         |');
+    Escribir('|                        |');
+    Escribir('| 3) Salir               |');
+    Escribir('|                        |');
+    Escribir('--------------------------');
+    Leer(op);
+    clrscr;
+
+    caso op de
+      1:
+      inicar
+              //Datos del comprador
+        repetir
+        Escribir('Cuantos anios tiene el comprador?');
+        Leer(edadcomprador);
+
+        conversionExitosaCar:=TryStrToInt(Edadcomprador, EdadcompradorInt);
+        conversionExitosaLong:= (edadcompradorInt >=0) y (edadcompradorInt<= 90);
+        Si  no conversionExitosaCar y conversionExitosaLong Entonces
+              Iniciar
+
+           Escribir('Por favor, ingrese un numero valido.');
+
+
+              Fin;
+
+           Hasta conversionExitosaCar y conversionExitosaLong;
+
+
+
+        Si (edadcompradorInt > 18) Entonces
+        Inicar
+
+          repetir
+          Escribir(' ');
+          Escribir('Cuantos boletos desea comprar? (Maximo 5)');
+          Leer(TotalBoletos);
+
+          conversionExitosaCar:=TryStrToInt(TotalBoletos,TotalBoletosInt);
+
+          si no conversionExitosaCar Entonces
+          Iniciar
+            Escribir('Ha ingresado un caracter invalido, intente nuevamente.')
+          Fin
+
+          Hasta conversionExitosaCar;
+
+          Si (TotalBoletosInt <= 5) y (TotalBoletosInt > 0) Entonces 
+          Iniciar
+            i := 1; // contahacerr de boletos
+            Mientras i <= TotalBoletosInt hacer
+            Iniciar
+
+
+             //Datos de los boletos que seran comprados
+              clrscr;
+              Escribir('--------------------------');
+              Escribir('Ingrese sus datos para el boleto ', i, ':');
+              Escribir('--------------------------');
+              Escribir(' ');
+              Escribir('Ingrese su nombre');
+              Escribir(nombre);
+              Escribir(' ');
+
+
+//   NACIONALIDAD
+                   clrscr;
+                   repetir
+                     Escribir('Cual es su nacionalidad?');
+                     Escribir('--------------------------');
+                     Escribir('| V- Venezolano          |');
+                     Escribir('|                        |');
+                     Escribir('| E- Extranjero          |');
+                     Escribir('--------------------------');
+                     Leer(nacionalidad);
+                     clrscr;
+                     caso nacionalidad de
+                       'V', 'v': Iniciar
+                                   Escribir('Es usted Venezolano.');
+                                   repetir
+
+                                   Escribir('Por favor, ingrese su cedula de la siguiente manera -> 12345678');
+                                   Leer(cedula);
+
+                                   conversionExitosaCar:= TryStrToInt(cedula,cedulaInt);
+
+                                   Si no conversionExitosaCar Entonces
+
+                                   Iniciar
+                                     Escribir('Caracteres invalidos, ingrese cedula nuevamente.')
+                                   Fin;
+                                   Hasta conversionExitosaCar;
+                                 Fin;
+                       'E', 'e': Iniciar
+                         repetir
+                                   Escribir('Es usted una persona Extranjera.');
+                                   Escribir('Por favor, ingrese su cedula de extranjero de la siguiente manera -> 12345678');
+                                   Leer(cedula);
+                                   conversionExitosaCar:= TryStrToInt(cedula,cedulaInt);
+                                   Si no conversionExitosaCar Entonces
+
+                                   Iniciar
+                                     Escribir('Caracteres invalidos, ingrese cedula nuevamente.')
+                                   Fin;
+                                   Hasta conversionExitosaCar
+
+                                 Fin;
+                       Sino
+                         Escribir('Usted ha ingresado un caracter no valido. Intente de nuevo');
+                     Fin;
+                   Hasta (nacionalidad = 'V') o (nacionalidad = 'E') o (nacionalidad = 'v') o (nacionalidad = 'e');
+
+              Escribir(' ');
+              Escribir('Ingrese su edad');
+              Leer(edad);
+              Si (edad<12) o (edad>=60) Entonces
+              Iniciar
+                Escribir('Tiene un descuento del 10%! Felicidades!(Se aplicara en el precio del pasaje)');
+                Descuento:=0.1;
+                Leer;
+              Fin;
+
+
+//   TIPor DE VUELO
+              totalNacional:= 0;
+              totalInternacional:=0;
+
+              Escribir('');
+              Escribir('Seleccione el tiPor de vuelo:');
+              Escribir(' N - Nacional');
+              Escribir(' I - Internacional');
+              Leer(TiPorVuelo);
+              caso upcase(TiPorVuelo) de
+                'N':
+                Iniciar
+                  TiPorVuelo := 'Nacional';
+                  totalNacional := totalNacional + 1;
+
+// Vuelo Nacional
+Escribir('Su vuelo amerita un boleto de vuelta?. (Si o No)');
+repetir
+  Iniciar
+    PrecioTotal:=0;
+                  Leer(vuelta);
+                  vuelta := upcase(vuelta);
+                Fin;
+  Si (vuelta <> 'SI') y (vuelta <> 'NO') Entonces
+    Escribir('Porr favorr, ingrese "Si" o "No".');
+Hasta (vuelta = 'SI') o (vuelta = 'NO');
+                  clrscr;
+					Escribir('|---------------------------------------------|');
+					Escribir('|-------------VUELOS NACIONALES---------------|');
+					Escribir('|---------------------------------------------|');
+					Escribir('|-----------------DESTINOS--------------------|');
+					Escribir('|---------------------------------------------|');
+					Escribir('|---------------------------------|--PRECIOS--|');
+					Escribir('|---------------------------------------------|');
+					Escribir('|Porlamar-Caracas|Caracas-Prolamar|    50$    |');
+					Escribir('|---------------------------------------------|');
+					Escribir('|Puerto odaz-Caracas|Caracaz-Puerto odaz|45$|');
+					Escribir('|---------------------------------------------|');
+					Escribir('|Maracaibo-Caracas|Caracas-Maracaibo|   80$   |');
+					Escribir('|---------------------------------------------|');
+					Escribir('|El Vigia-Caracas|Caracas-El Vigia|    75$    |');
+					Escribir('|---------------------------------------------|');
+					Escribir('|Barcelona-Caracas|Caracas-Barcelona|   30$   |');
+					Escribir('|---------------------------------------------|');
+					Escribir('|La Fria-Caracas|Caracas-La Fria|    60$      |');
+					Escribir('|---------------------------------------------|');
+					Escribir;
+					Escribir('Presione Enter');
+					Leer;
+					clrscr;
+					Escribir('Ingrese su destino:');
+					Escribir('1.Porlamar-Caracas');
+					Escribir('2.Puerto odaz-Caracas');
+					Escribir('3.Maracaibo-Caracas');
+					Escribir('4.El Vigia-Caracas');
+					Escribir('5.Barcelona-Caracas');
+					Escribir('6.La Fria-Caracas');
+					Leer(Nacional);
+					Si (Nacional=1)Entonces
+					Iniciar
+                                          Si  (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                              PrecioTotal:= PrecioTotal+PrecioPC;
+                                              PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                             destino := Porlamarcaracas;
+					  Escribir('Su vuelo sera de caracas a Porlamar');
+					  Leer;
+                                            Fin
+                                             Sino
+                                             Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioPC;
+                                             destino := Porlamarcaracas;
+					  Escribir('Su vuelo sera de caracas a Porlamar');
+
+                                             Fin;
+                                          Leer;
+					Fin
+					Sino Si (Nacional=2)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                             PrecioTotal:= PrecioTotal+PrecioPorC;
+                                             PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= PuertoodazCaracas;
+					  Escribir('Su vuelo sera de puerto odaz a caracas');
+					  Leer;
+                                            Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioPorC;
+                                          destino:= PuertoodazCaracas;
+					  Escribir('Su vuelo sera de puerto odaz a caracas');
+                                          Fin;
+					  Leer;
+					Fin
+					Sino Si (Nacional=3)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                             PrecioTotal:= PrecioTotal+PrecioMC;
+                                             PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:=  MaracaiboCaracas;
+					  Escribir('Su vuelo sera de Maracaibo a caracas')
+                                            Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioMC;
+                                          destino:=  MaracaiboCaracas;
+					  Escribir('Su vuelo sera de Maracaibo a caracas');
+                                          Fin;
+					  Leer;
+					Fin
+					Sino Si (Nacional=4)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                             PrecioTotal:= PrecioTotal+PrecioVC;
+                                             PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= VigiaCaracas;
+					  Escribir('Su vuelo sera de el vigia a caracas');
+                                            Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioVC;
+                                          destino:= VigiaCaracas;
+					  Escribir('Su vuelo sera de el vigia a caracas');
+                                          Fin;
+					  Leer;
+					Fin
+					Sino Si (Nacional=5)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                             PrecioTotal:= PrecioTotal+PrecioBC;
+                                             PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= BarcelonaCaracas;
+					  Escribir('Su vuelo sera de Barcelona a Caracas');
+                                            Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioBC;
+                                          destino:= BarcelonaCaracas;
+					  Escribir('Su vuelo sera de Barcelona a Caracas');
+                                          Fin;
+					  Leer;
+					Fin
+					Sino Si (Nacional=6)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                           PrecioTotal:= PrecioTotal+PrecideC;
+                                           PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= FriaCaracas;
+					  Escribir('Su vuelo sera de La Fria a Caracas');
+                                          Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecideC;
+
+                                          destino:= FriaCaracas;
+					  Escribir('Su vuelo sera de La Fria a Caracas');
+
+                                          Fin;
+                                          Leer;
+					Fin
+					Sino Si (Nacional>6) o (Nacional<0)Entonces
+					Iniciar
+					  Escribir('Opcion no valida');
+					  Leer;
+                                        Fin;
+                Fin;
+
+                'I':
+                Iniciar
+                  TiPorVuelo := 'Internacional';
+                  totalInternacional := totalInternacional + 1;
+// Vuelo Internacional
+            Escribir('Su vuelo amerita un boleto de vuelta?. (Si o No)');
+repetir
+  Iniciar
+    PrecioTotal:=0;
+                  Leer(vuelta);
+                  vuelta := upcase(vuelta);
+                Fin;
+  Si (vuelta <> 'SI') y (vuelta <> 'NO') Entonces
+    Escribir('Por favor, ingrese "Si" o "No".');
+Hasta (vuelta = 'SI') o (vuelta = 'NO');
+
+                  clrscr;
+                                       Escribir('|--------------------------------------------------|');
+					Escribir('|----------------VUELOS INTERNACIONALES------------|');
+					Escribir('|--------------------------------------------------|');
+					Escribir('|--------------------DESTINOS----------------------|');
+					Escribir('|--------------------------------------------------|');
+					Escribir('|--------------------------------------|--PRECIOS--|');
+					Escribir('|--------------------------------------------------|');
+					Escribir('|Bogota-Caracas|Caracas-Bogota              | 499$ |');
+					Escribir('|--------------------------------------------------|');
+					Escribir('|Curazao-Caracas|Caracas-Curazao              |400$|');
+					Escribir('|--------------------------------------------------|');
+					Escribir('|Santo Domingo-Caracas|Caracas-Santo Domingo| 700$ |');
+					Escribir('|--------------------------------------------------|');
+					Escribir('|La Romana-Caracas|Caracas-La Romana        | 650$ |');
+					Escribir('|--------------------------------------------------|');
+					Escribir;
+					Escribir('Presione Enter');
+					Leer;
+					clrscr;
+					Escribir('Ingrese su destino:');
+					Escribir('1.Bogota-Caracas');
+					Escribir('2.Curazao-Caracas');
+					Escribir('3.Santo Domingo-Caracas');
+					Escribir('4.La Romana-Caracas');
+					Leer(Internacional);
+					Si (Internacional=1)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioBoC;
+                                          PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= BogotaCaracas;
+					  Escribir('Su vuelo sera de Bogota a Porlamar');
+
+                                          Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioBoC;
+                                          destino:= BogotaCaracas;
+					  Escribir('Su vuelo sera de Bogota a Porlamar');
+
+                                          Fin;
+                                          Leer;
+					Fin
+					Sino Si (Internacional=2)Entonces
+					Iniciar
+                                           Si (edad<12) o (edad>=60) Entonces
+                                           Iniciar
+                                              PrecioTotal:= PrecioTotal+PrecioCC;
+                                              PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= CurazaoCaracas;
+					  Escribir('Su vuelo sera de curazao a caracas');
+
+                                           Fin
+                                           Sino
+                                           Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioCC;
+                                          destino:= CurazaoCaracas;
+					  Escribir('Su vuelo sera de curazao a caracas');
+                                          Fin;
+                                           Leer;
+
+
+					Fin
+					Sino Si (Internacional=3)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                           PrecioTotal:= PrecioTotal+PrecioSDC;
+                                           PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= SantoDomingoCaracas;
+					  Escribir('Su vuelo sera de Santo Domingo a caracas');
+
+                                            Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioSDC;
+                                          destino:= SantoDomingoCaracas;
+					  Escribir('Su vuelo sera de Santo Domingo a caracas');
+                                          Fin;
+					  Leer;
+					Fin
+					Sino Si (Internacional=4)Entonces
+					Iniciar
+                                          Si (edad<12) o (edad>=60) Entonces
+                                          Iniciar
+                                           PrecioTotal:= PrecioTotal+PrecioLRC;
+                                           PrecioTotal:= PrecioTotal-(PrecioTotal*Descuento);
+                                          destino:= RomanaCaracas;
+					  Escribir('Su vuelo sera de La Romana a caracas');
+                                          Fin
+                                          Sino
+                                          Iniciar
+                                          PrecioTotal:= PrecioTotal+PrecioLRC;
+
+                                          destino:= RomanaCaracas;
+					  Escribir('Su vuelo sera de La Romana a caracas');
+
+                                          Fin;
+                                          Leer;
+					Fin
+					Sino Si (Internacional>6) o (Internacional<0)Entonces
+					Iniciar
+					  Escribir('Opcion no valida');
+					  Leer;
+					Fin;
+
+                Fin;
+
+                Sino
+                  TiPorVuelo := 'TiPor de vuelo no seleccionahacer';
+              Fin;
+
+//  CLASE DEL BOLETO
+
+             // repetir
+                repetir
+                Escribir(' ');
+                clrscr;
+                Escribir('');
+                Escribir('Ingrese la clase del boleto');
+                Escribir('--------------------------');
+                Escribir('| 1) Primera clase (25$)  |');
+                Escribir('| 2) Segunda Clase (10$)  |');
+                Escribir('| 3) Tercera Clase  (5$)      |');
+                Escribir('--------------------------');
+                Leer(clasebol);
+
+                  conversionExitosaCar:= TryStrToInt(clasebol,clasebolInt);
+
+                  Si no conversionExitosaCar o(clasebolInt < 1) o (clasebolInt > 3) Entonces
+
+                  Iniciar
+                     Escribir('Caracteres invalidos, ingrese clase nuevamente');
+                     Leer;
+                   Fin
+
+                  Sino
+                  Iniciar
+                caso clasebolInt de
+
+                1:
+                  Iniciar
+                     clrscr;
+                    Escribir('Ha seleccionado primera clase');
+                    clasebol:= 'Primera Clase(25$)';
+                    PrecioClase:=25;
+                    Leer;
+                  Fin;
+                2:
+                  Iniciar
+                    clrscr;
+                    Escribir('Ha seleccionado segunda clase');
+                    PrecioClase:=10;
+                    clasebol:='Segunda Clase(10$)';
+                    Leer;
+                  Fin;
+                  3:
+                  Iniciar
+                    clrscr;
+                    Escribir('Ha seleccionado tercera clase.');
+                    clasebol:='Tercera Clase(5$)';
+                    PrecioClase:=5;
+                    Leer;
+                    Si (edad >= 60) Entonces
+                    Iniciar
+                      Escribir('Lo sentimos, los boletos de tercera clase no estan disPornibles para personas mayoes de 60 anios.');
+                      Escribir('Seleccione otra clase, Por favor');
+                      Leer;
+                    Fin;
+                  Fin;
+                  Sino
+                  Iniciar
+                    Escribir('Usted ha ingresado un caracter no valido. Intente de nuevo');
+                    Leer;
+
+                  Fin;
+                Fin;
+               Fin;
+              Hasta  ((clasebolInt = 1) o (clasebolInt = 2) o (clasebolInt = 3)) y conversionExitosaCar;
+
+
+//  RES. DATOS BOLETOS
+               clrscr;
+
+
+              caso i de
+
+
+              1:
+              Iniciar
+                NombreBoleto1 := nombre;
+                edad1 := edad;
+                CedulaBoleto1 := cedula;
+                vueltaBoleto1:= vuelta;
+                ClaseBoleto1:= clasebol;
+                PrecioClase1:=PrecioClase;
+                TiPorVueloBoleto1 := TiPorVuelo;
+                DestinoBoleto1 := destino;
+                PrecioBoleto1 := PrecioTotal;
+
+
+              Fin;
+              2:
+              Iniciar
+                NombreBoleto2 := nombre;
+                CedulaBoleto2 := cedula;
+                edad2 := edad;
+                vueltaBoleto2:=vuelta;
+                TiPorVueloBoleto2 := TiPorVuelo;
+                ClaseBoleto2:= clasebol;
+                PrecioClase2:=PrecioClase;
+                DestinoBoleto2 := destino;
+
+                PrecioBoleto2 := PrecioTotal;
+
+              Fin;
+              3:
+              Iniciar
+                NombreBoleto3 := nombre;
+                CedulaBoleto3 := cedula;
+                edad3 := edad;
+                vueltaBoleto3:=vuelta;
+                TiPorVueloBoleto3 := TiPorVuelo;
+                PrecioClase3:=PrecioClase;
+                ClaseBoleto3:= clasebol;
+                DestinoBoleto3 := destino;
+                PrecioBoleto3 := PrecioTotal;
+                Fin;
+              4:
+              Iniciar
+                NombreBoleto4 := nombre;
+                CedulaBoleto4 := cedula;
+                edad4 := edad;
+                vueltaBoleto4:=vuelta;
+                TiPorVueloBoleto4 := TiPorVuelo;
+                PrecioClase4:=PrecioClase;
+                ClaseBoleto4:= clasebol;
+                DestinoBoleto4 := destino;
+                PrecioBoleto4 := PrecioTotal;
+                Fin;
+              5:
+              Iniciar
+                NombreBoleto5 := nombre;
+                CedulaBoleto5 := cedula;
+                edad5 := edad;
+                vueltaBoleto5:=vuelta;
+                TiPorVueloBoleto5 := TiPorVuelo;
+                PrecioClase5:=PrecioClase;
+                ClaseBoleto5:= clasebol;
+                DestinoBoleto5 := destino;
+                PrecioBoleto5 := PrecioTotal;
+                Fin;
+                  Fin;
+
+              i := i + 1;
+
+              Si i <= TotalBoletosInt Entonces
+              Iniciar
+                Escribir('');
+                Escribir('Presiona Enter para ingresar el proximo boleto...');
+                Leer;
+              Fin;
+            Fin;
+          Fin
+              Sino
+              Iniciar
+                Escribir('Ingrese un número válido de boletos (entre 1 y 5)');
+              Fin;
+            Fin
+              Sino
+              Iniciar
+                Escribir('Es muy joven para comprar boletos');
+              Fin;
+          Fin;
+
+
+
+      2:
+      Iniciar
+        caso totalBoletosInt  de
+          1: Iniciar
+             Escribir('-----Infomacion del sistema------');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + ' boletos');
+        Escribir('infomacion de Boleto Nº1');
+        Escribir('nombre: '+ NombreBoleto1);
+        Escribir('Cedula: '+ CedulaBoleto1);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto1);
+        Escribir('Clase: ' + ClaseBoleto1);
+        Escribir('destino a: '+ DestinoBoleto1);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto1);
+        Str(PrecioBoleto1:0:2,PrecioBoleto1Str);
+
+
+
+        Precideinal:=0;
+        Precideinal:=PrecioBoleto1+PrecioClase1;
+        Str(Precideinal:0:2,PrecioTotal1Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto1Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+         Leer;
+        clrscr;
+
+        Escribir('--------------------------------------');
+
+        Escribir('El precio total a pagar es: '+ PrecioTotal1Str);
+        Escribir('(Incluye el precio de la clase seleccionada en el monto final)');
+
+        Escribir('--------------------------------------');
+
+        Leer;
+
+  //Servicios adicionales
+  precioServicioTo := 0; // Inicializar el precio del servicio como cero
+
+  repetir
+    Escribir(' ¿Desea algún servicio adicional? (Si/No)');
+    Leer(servicioesp);
+
+    Si (servicioesp = 'si') Entonces
+      servicioBoo := true
+    Sino Si (servicioesp = 'no') Entonces
+      servicioBoo := false
+    Sino
+      Escribir('Por favor, resPornda con "si" o "no".');
+
+  Hasta ((servicioesp = 'Si') o (servicioesp = 'si')) o ((servicioesp = 'No') o (servicioesp = 'no')); // Corección en la condición del bucle
+
+  Si servicioBoo Entonces
+  Iniciar
+
+    Escribir('Ha solicitado un servicio especial');
+
+    repetir
+    Escribir(' ');
+    Escribir('');
+    Escribir('¿Qué necesita?');
+    Escribir('-----------------------------------');
+    Escribir('| 1) Reservación de taxi de línea  |');
+    Escribir('| 2) Hospedaje en hotel (1 noche)  |');
+    Escribir('-----------------------------------');
+    Leer(servicio);
+    caso servicio de
+      1:
+      Iniciar
+        Escribir('Ha seleccionado la reservación de un taxi de línea');
+        precioServicio := serv1;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+      2:
+      Iniciar
+        Escribir('Ha seleccionado una reservación de: 1 noche en el hotel.');
+        precioServicio := serv2;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+    Sino
+      Escribir('No se ha añadido ningún servicio. intente nuevamente');
+    Fin;
+
+
+
+    // CoTE
+    precioServicioTo := precioServicioTo + precioServicio;
+    Escribir('El nuevo precio total actual es: ', (precioServicioTo +Precideinal):0:2);
+    Leer;
+
+  Hasta (servicio = 1) o (servicio = 2);
+
+      Escribir('Ingrese monto a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+  Fin
+  Sino
+  Iniciar
+
+    Escribir('No ha solicitado ningún servicio adicional.');
+    Escribir('El precio total a pagar es: '+ PrecioTotal1Str);
+    Escribir('Ingrese monto de pasajes a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin;
+    Fin;
+
+
+
+          2:
+          Iniciar
+
+            Escribir('-----Infomacion del sistema------');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + ' boletos');
+        Escribir('infomacion de Boleto Nº1');
+        Escribir('nombre: '+ NombreBoleto1);
+        Escribir('Cedula: '+ CedulaBoleto1);
+        Str(edad1,edad1Str);
+        Escribir('edad: ' + edad1Str);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto1);
+        Escribir('Clase: ' + ClaseBoleto1);
+        Escribir('destino a: '+ DestinoBoleto1);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto1);
+
+        Precideinal := 0;
+
+        Precideinal := Precideinal + PrecioBoleto1;
+        Str(Precideinal:0:2, PrecioTotal1Str);
+
+
+
+        Escribir('El precio del pasaje es:  '+ PrecioTotal1Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('--------------------------------------');
+
+        Escribir('infomacion de Boleto Nº2');
+        Escribir('nombre: '+ NombreBoleto2);
+        Escribir('Cedula: '+ CedulaBoleto2);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto2);
+        Escribir('Clase: ' + ClaseBoleto2);
+        Escribir('destino a: '+ DestinoBoleto2);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto2);
+
+         Precideinal := 0;
+
+        Precideinal := Precideinal + PrecioBoleto2;
+        Str(Precideinal:0:2, PrecioTotal2Str);
+
+        Escribir('El precio del pasaje es:  '+ PrecioTotal2Str);
+        Escribir('(Aplicando descuento Porr edad de cumplir los requisitos)');
+        Precideinal:=0;
+
+        Precideinal:=PrecioBoleto1+PrecioBoleto2+PrecioClase1+PrecioClase2;
+        Str(Precideinal:0:2,PrecideinalStr);
+        Escribir('--------------------------------------');
+
+        Escribir('El precio total a pagar es: '+ PrecideinalStr);
+        Escribir('(Incluye el precio de la clase seleccionada en el monto final)');
+
+        Escribir('--------------------------------------');
+
+
+
+
+        Leer;
+
+        //Servicios adicionales
+  precioServicioTo := 0; // Inicializar el precio del servicio como cero
+
+  repetir
+    Escribir(' ¿Desea algún servicio adicional? (Si/No)');
+    Leer(servicioesp);
+
+    Si (servicioesp = 'si') Entonces
+      servicioBoo := true
+    Sino Si (servicioesp = 'no') Entonces
+      servicioBoo := false
+    Sino
+      Escribir('Por favor, resPornda con "si" o "no".');
+
+  Hasta ((servicioesp = 'Si') o (servicioesp = 'si')) o ((servicioesp = 'No') o (servicioesp = 'no')); // Corección en la condición del bucle
+
+  Si servicioBoo Entonces
+  Iniciar
+
+    Escribir('Ha solicitado un servicio especial');
+
+    repetir
+    Escribir(' ');
+    Escribir('');
+    Escribir('¿Qué necesita?');
+    Escribir('-----------------------------------');
+    Escribir('| 1) Reservación de taxi de línea  |');
+    Escribir('| 2) Hospedaje en hotel (1 noche)  |');
+    Escribir('-----------------------------------');
+    Leer(servicio);
+    caso servicio de
+      1:
+      Iniciar
+        Escribir('Ha seleccionado la reservación de un taxi de línea');
+        precioServicio := serv1;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+      2:
+      Iniciar
+        Escribir('Ha seleccionadouna reservación de: 1 noche en el hotel.');
+        precioServicio := serv2;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+    Sino
+      Escribir('No se ha añadido ningún servicio. intente nuevamente');
+    Fin;
+
+    // CoTE
+    precioServicioTo := precioServicioTo + precioServicio;
+    Escribir('El nuevo precio total actual es: ', (precioServicioTo +Precideinal):0:2);
+    Leer;
+
+  Hasta (servicio = 1) o (servicio = 2);
+
+   Escribir('Ingrese monto a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin
+  Sino
+  Iniciar
+
+    Escribir('No ha solicitado ningún servicio adicional.');
+    Escribir('El precio total a pagar es: '+ PrecideinalStr);
+    Escribir('Ingrese monto de pasajes a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin;
+    Fin;
+
+          3:
+          Iniciar
+             Escribir('-----Infomacion del sistema------');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + ' boletos');
+        Escribir('infomacion de Boleto Nº1');
+        Escribir('nombre: '+ NombreBoleto1);
+        Escribir('Cedula: '+ CedulaBoleto1);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto1);
+        Escribir('Clase: ' + ClaseBoleto1);
+        Escribir('destino a: '+ DestinoBoleto1);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto1);
+        Str(PrecioBoleto1:0:2,PrecioBoleto1Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto1Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('infomacion de Boleto Nº2');
+        Escribir('nombre: '+ NombreBoleto2);
+        Escribir('Cedula: '+ CedulaBoleto2);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto2);
+        Escribir('Clase: ' + ClaseBoleto2);
+        Escribir('destino a: '+ DestinoBoleto2);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto2);
+        Str(PrecioBoleto2:0:2,PrecioBoleto2Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto2Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº2');
+        Escribir('nombre: '+ NombreBoleto3);
+        Escribir('Cedula: '+ CedulaBoleto3);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto3);
+        Escribir('Clase: ' + ClaseBoleto3);
+        Escribir('destino a: '+ DestinoBoleto3);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto3 );
+        Str(PrecioBoleto3:0:2,PrecioBoleto3Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto3Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Precideinal:=0;
+        Precideinal:=PrecioBoleto1+PrecioBoleto2+PrecioBoleto3+PrecioClase1+PrecioClase2+PrecioClase3;
+        Str(Precideinal:0:2,PrecioTotalStr);
+        Escribir('--------------------------------------');
+
+        Escribir('El precio total a pagar es: '+ PrecioTotalStr);
+        Escribir('(Incluye el precio de la clase seleccionada en el monto final)');
+
+        Escribir('--------------------------------------');
+        Leer;
+
+        //Servicios adicionales
+  precioServicioTo := 0; // Inicializar el precio del servicio como cero
+
+  repetir
+    Escribir(' ¿Desea algún servicio adicional? (Si/No)');
+    Leer(servicioesp);
+
+    Si (servicioesp = 'si') Entonces
+      servicioBoo := true
+    Sino Si (servicioesp = 'no') Entonces
+      servicioBoo := false
+    Sino
+      Escribir('Por favor, resPornda con "si" o "no".');
+
+  Hasta ((servicioesp = 'Si') o (servicioesp = 'si')) o ((servicioesp = 'No') o (servicioesp = 'no')); // Corección en la condición del bucle
+
+  Si servicioBoo Entonces
+  Iniciar
+
+    Escribir('Ha solicitado un servicio especial');
+
+    repetir
+    Escribir(' ');
+    Escribir('');
+    Escribir('¿Qué necesita?');
+    Escribir('-----------------------------------');
+    Escribir('| 1) Reservación de taxi de línea  |');
+    Escribir('| 2) Hospedaje en hotel (1 noche)  |');
+    Escribir('-----------------------------------');
+    Leer(servicio);
+    caso servicio de
+      1:
+      Iniciar
+        Escribir('Ha seleccionadola reservación de un taxi de línea');
+        precioServicio := serv1;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+      2:
+      Iniciar
+        Escribir('Ha seleccionado una reservación de: 1 noche en el hotel.');
+        precioServicio := serv2;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+    Sino
+      Escribir('No se ha añadido ningún servicio. intente nuevamente');
+    Fin;
+
+    // CoTE
+    precioServicioTo := precioServicioTo + precioServicio;
+    Escribir('El nuevo precio total actual es: ', (precioServicioTo +Precideinal):0:2);
+    Leer;
+
+  Hasta (servicio = 1) o (servicio = 2);
+
+   Escribir('Ingrese monto a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin
+  Sino
+  Iniciar
+
+    Escribir('No ha solicitado ningún servicio adicional.');
+    Escribir('El precio total a pagar es: '+ PrecideinalStr);
+    Escribir('Ingrese monto de pasajes a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin;
+
+          Fin;
+          4:
+          Iniciar
+        Escribir('-----Infomacion del sistema------');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + ' boletos');
+        Escribir('infomacion de Boleto Nº1');
+        Escribir('nombre: '+ NombreBoleto1);
+        Escribir('Cedula: '+ CedulaBoleto1);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto1);
+        Escribir('Clase: ' + ClaseBoleto1);
+        Escribir('destino a: '+ DestinoBoleto1);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto1);
+        Str(PrecioBoleto1:0:2,PrecioBoleto1Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto1Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº2');
+        Escribir('nombre: '+ NombreBoleto2);
+        Escribir('Cedula: '+ CedulaBoleto2);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto2);
+        Escribir('Clase: ' + ClaseBoleto2);
+        Escribir('destino a: '+ DestinoBoleto2);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto2);
+        Str(PrecioBoleto2:0:2,PrecioBoleto2Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto2Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº3');
+        Escribir('nombre: '+ NombreBoleto3);
+        Escribir('Cedula: '+ CedulaBoleto3);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto3);
+        Escribir('Clase: ' + ClaseBoleto3);
+        Escribir('destino a: '+ DestinoBoleto3);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto3 );
+        Str(PrecioBoleto3:0:2,PrecioBoleto3Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto3Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº4');
+        Escribir('nombre: '+ NombreBoleto4);
+        Escribir('Cedula: '+ CedulaBoleto4);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto4);
+        Escribir('Clase: ' + ClaseBoleto4);
+
+        Escribir('destino a: '+ DestinoBoleto4);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto4);
+        Str(PrecioBoleto4:0:2,PrecioBoleto4Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto4Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Precideinal:=0;
+        Precideinal:=PrecioBoleto1+PrecioBoleto2+PrecioBoleto3+PrecioBoleto4+PrecioClase1+PrecioClase2+PrecioClase3+PrecioClase4;
+        Str(Precideinal:0:2,PrecioTotalStr);
+        Escribir('--------------------------------------');
+
+        Escribir('El precio total a pagar es: '+ PrecioTotalStr);
+        Escribir('(Incluye el precio de la clase seleccionada en el monto final)');
+
+        Escribir('--------------------------------------');
+
+        Leer;
+
+        //Servicios adicionales
+  precioServicioTo := 0; // Inicializar el precio del servicio como cero
+
+  repetir
+    Escribir(' ¿Desea algún servicio adicional? (Si/No)');
+    Leer(servicioesp);
+
+    Si (servicioesp = 'si') Entonces
+      servicioBoo := true
+    Sino Si (servicioesp = 'no') Entonces
+      servicioBoo := false
+    Sino
+      Escribir('Por favor, resPornda con "si" o "no".');
+
+  Hasta ((servicioesp = 'Si') o (servicioesp = 'si')) o ((servicioesp = 'No') o (servicioesp = 'no')); // Corección en la condición del bucle
+
+  Si servicioBoo Entonces
+  Iniciar
+
+    Escribir('Ha solicitado un servicio especial');
+
+    repetir
+    Escribir(' ');
+    Escribir('');
+    Escribir('¿Qué necesita?');
+    Escribir('-----------------------------------');
+    Escribir('| 1) Reservación de taxi de línea  |');
+    Escribir('| 2) Hospedaje en hotel (1 noche)  |');
+    Escribir('-----------------------------------');
+    Leer(servicio);
+    caso servicio de
+      1:
+      Iniciar
+        Escribir('Ha seleccionadola reservación de un taxi de línea');
+        precioServicio := serv1;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+      2:
+      Iniciar
+        Escribir('Ha seleccionado una reservación de: 1 noche en el hotel.');
+        precioServicio := serv2;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+    Sino
+      Escribir('No se ha añadido ningún servicio. intente nuevamente');
+    Fin;
+
+    // CoTE
+    precioServicioTo := precioServicioTo + precioServicio;
+    Escribir('El nuevo precio total actual es: ', (precioServicioTo +Precideinal):0:2);
+    Leer;
+
+  Hasta (servicio = 1) o (servicio = 2);
+
+   Escribir('Ingrese monto a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin
+  Sino
+  Iniciar
+
+    Escribir('No ha solicitado ningún servicio adicional.');
+    Escribir('El precio total a pagar es: '+ PrecideinalStr);
+    Escribir('Ingrese monto de pasajes a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin;
+
+          Fin;
+          5:
+          Iniciar
+             Escribir('-----Infomacion del sistema------');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos+ 'boletos');
+        Escribir('infomacion de Boleto Nº1');
+        Escribir('nombre: '+ NombreBoleto1);
+        Escribir('Cedula: '+ CedulaBoleto1);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto1);
+        Escribir('Clase: ' + ClaseBoleto1);
+        Escribir('destino a: '+ DestinoBoleto1);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto1 );
+        Str(PrecioBoleto1:0:2,PrecioBoleto1Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto1Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos+ 'boletos');
+        Escribir('infomacion de Boleto Nº2');
+        Escribir('nombre: '+ NombreBoleto2);
+        Escribir('Cedula: '+ CedulaBoleto2);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto2);
+        Escribir('Clase: ' + ClaseBoleto2);
+        Escribir('destino a: '+ DestinoBoleto2);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto2 );
+        Str(PrecioBoleto2:0:2,PrecioBoleto2Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto2Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº3');
+        Escribir('nombre: '+ NombreBoleto3);
+        Escribir('Cedula: '+ CedulaBoleto3);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto3);
+        Escribir('Clase: ' + ClaseBoleto3);
+        Escribir('destino a: '+ DestinoBoleto3);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto3);
+        Str(PrecioBoleto3:0:2,PrecioBoleto3Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto3Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº4');
+        Escribir('nombre: '+ NombreBoleto4);
+        Escribir('Cedula: '+ CedulaBoleto4);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto4);
+        Escribir('Clase: ' + ClaseBoleto4);
+
+        Escribir('destino a: '+ DestinoBoleto4);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto4);
+        Str(PrecioBoleto4:0:2,PrecioBoleto4Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto4Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Escribir('---------------------------------------');
+        Escribir('                                       ');
+        Escribir('Se han comprado una cantidad total de: ' + totalBoletos + 'boletos');
+        Escribir('infomacion de Boleto Nº5');
+        Escribir('nombre: '+ NombreBoleto5);
+        Escribir('Cedula: '+ CedulaBoleto5);
+        Escribir('TiPor de vuelo: ' + TiPorVueloBoleto5);
+        Escribir('Clase: ' + ClaseBoleto5);
+        Escribir('destino a: '+ DestinoBoleto5);
+        Escribir('Viaje de ida y vuelta? '+ vueltaBoleto5 );
+        Str(PrecioBoleto5:0:2,PrecioBoleto5Str);
+        Escribir('El precio del pasaje es:  '+ PrecioBoleto5Str);
+        Escribir('(Aplicando descuento Por edad de cumplir los requisitos)');
+
+        Precideinal:=0;
+        Precideinal:=PrecioBoleto1+PrecioBoleto2+PrecioBoleto3+PrecioBoleto4+PrecioBoleto5+PrecioClase1+PrecioClase2+PrecioClase3+PrecioClase4+PrecioClase5;
+        Str(Precideinal:0:2,PrecioTotalStr);
+        Escribir('--------------------------------------');
+
+        Escribir('El precio total a pagar es: '+ PrecioTotalStr);
+        Escribir('(Incluye el precio de la clase seleccionada en el monto final)');
+
+        Escribir('--------------------------------------');
+
+        Leer;
+
+        //Servicios adicionales
+  precioServicioTo := 0; // Inicializar el precio del servicio como cero
+
+  repetir
+    Escribir(' ¿Desea algún servicio adicional? (Si/No)');
+    Leer(servicioesp);
+
+    Si (servicioesp = 'si') Entonces
+      servicioBoo := true
+    Sino Si (servicioesp = 'no') Entonces
+      servicioBoo := false
+    Sino
+      Escribir('Por favor, resPornda con "si" o "no".');
+
+  Hasta ((servicioesp = 'Si') o (servicioesp = 'si')) o ((servicioesp = 'No') o (servicioesp = 'no')); // Corección en la condición del bucle
+
+  Si servicioBoo Entonces
+  Iniciar
+
+    Escribir('Ha solicitado un servicio especial');
+
+    repetir
+    Escribir(' ');
+    Escribir('');
+    Escribir('¿Qué necesita?');
+    Escribir('-----------------------------------');
+    Escribir('| 1) Reservación de taxi de línea  |');
+    Escribir('| 2) Hospedaje en hotel (1 noche)  |');
+    Escribir('-----------------------------------');
+    Leer(servicio);
+    caso servicio de
+      1:
+      Iniciar
+        Escribir('Ha seleccionadola reservación de un taxi de línea');
+        precioServicio := serv1;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+      2:
+      Iniciar
+        Escribir('Ha seleccionadouna reservación de: 1 noche en el hotel.');
+        precioServicio := serv2;
+        Escribir('El costo del servicio es: ', precioServicio:0:2);
+      Fin;
+    Sino
+      Escribir('No se ha añadido ningún servicio. intente nuevamente');
+    Fin;
+
+    // CoTE
+    precioServicioTo := precioServicioTo + precioServicio;
+    Escribir('El nuevo precio total actual es: ', (precioServicioTo +Precideinal):0:2);
+    Leer;
+
+  Hasta (servicio = 1) o (servicio = 2);
+
+   Escribir('Ingrese monto a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin
+  Sino
+  Iniciar
+
+    Escribir('No ha solicitado ningún servicio adicional.');
+    Escribir('El precio total a pagar es: '+ PrecideinalStr);
+    Escribir('Ingrese monto de pasajes a cancelar');
+  Leer(pago);
+  Si (pago > (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    vuelto := (pago - (precioServicioTo +Precideinal));
+    Escribir('Su vuelto es de ', vuelto:0:2);
+  Fin
+  Sino Si (pago < (precioServicioTo +Precideinal)) Entonces
+  Iniciar
+    faltante := ((precioServicioTo +Precideinal) - pago);
+    Escribir('El faltante en el precio serían de ', faltante:0:2);
+    Escribir('Ingrese el siguiente monto: ');
+    Leer(pago); // monto nuevo
+    Mientras pago <> faltante hacer // Se repite hasta que el monto ingresado sea suficiente
+    Iniciar
+      Escribir('El monto ingresado no cubre el faltante. Ingrese un monto suficiente: ');
+      Leer(pago);
+    Fin;
+    Escribir('Su compra se ha realizado con éxito');
+  Fin
+  Sino
+    Escribir('Su compra se ha realizado con éxito');
+
+  Leer;
+
+  Fin;
+
+          Fin;
+        Fin;
+
+      Fin;
+    Fin;
+    Hasta op = 3;
+FIN.
+
+
