@@ -1,0 +1,13 @@
+- Para futuros poryectos, asegurarse que el mismo compila en geany.
+- ¿Por qué ingreso la edad de 18 años y me dice que es muy joven? Lo ideal es que la condición sea mayor o igual a 18
+- ¿Que sucede si en vez del usuario quierer viajar Caracas Porlamar, quiere viajar Porlamar-Caracas ?
+- Puedo ingresar numeros en los nombres
+- No aplica descuento para personas menores de 12 y mayores de 60
+- Si ingreso que compraré 2 boletos y en uno de es para una persona mayor de 60, me equivoco y selecciono 3era clase, solo me toma la compra de un boleto, deberia existir una condición.
+- En el reporte falta:
+  Total de ingresos por cada clase.
+  Detalle de ingresos por tipo de boleto (nacional e internacional).
+  Detalle de ingresos por ruta de viaje.
+  Número de servicios adicionales solicitados.
+
+- Con respecto a pseudocodigo, no es necesario que depues del "Si" coloquen un "Incicio", solo deberian cerrar ese "Si / Sino" con "Fin Si / Fin Sino"
